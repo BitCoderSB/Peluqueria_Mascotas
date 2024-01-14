@@ -5,7 +5,11 @@
 package Controladores;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import Datos.Mascota;
+import Logica.Gestion_Mascota;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -24,13 +30,35 @@ public class GananciaController implements Initializable {
 
     @FXML
     private Button btn;
+    @FXML
+    private TextArea tex_area;
+    @FXML
+    private TextField bt_cost;
 
+    ArrayList<Mascota> Mascotas;
+    private Gestion_Mascota pet;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        pet = new Gestion_Mascota();
+        Mascotas = pet.getList();
+        bt_cost.setText(String.valueOf(pet.gananciaDia()));
+
+        Mascota t;
+        
+        for(int i = 0; i < Mascotas.size(); i++){
+            t = Mascotas.get(i);
+            tex_area.appendText("Nombre Mascota: " + t.getName() + "\n");
+            
+            tex_area.appendText("Costo: " + t.getPrecio());
+
+            tex_area.appendText("\n------------------------------\n\n");
+            
+            
+        }
+        
     }    
 
     @FXML

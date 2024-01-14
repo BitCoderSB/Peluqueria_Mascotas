@@ -178,5 +178,11 @@ public class Gestion_Mascota {
         }
     }
 
+    public ArrayList<Mascota> getList(){
+
+        return Mascotas;
+
+    }
+
     
 }

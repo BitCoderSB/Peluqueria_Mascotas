@@ -6,6 +6,9 @@ package Controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import Datos.Mascota;
+import Logica.Gestion_Mascota;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -24,13 +29,21 @@ public class BuscarController implements Initializable {
 
     @FXML
     private Button btn;
+    @FXML
+    private TextField nameMascota;
+    @FXML
+    private Button btnBuscar;
+    @FXML
+    public TextArea tex_inf;
+
+    private Gestion_Mascota pet;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        pet = new Gestion_Mascota();
     }    
 
     @FXML
@@ -57,6 +70,38 @@ public class BuscarController implements Initializable {
             e.printStackTrace();
             // Manejar cualquier excepción que pueda ocurrir al cargar la nueva ventana
         }
+    }
+
+    @FXML
+    private void C_Buscar(ActionEvent event) {
+        tex_inf.setText("");
+        Mascota t;
+        int[] d = new int[3];
+        String L;
+        Mascota M = pet.buscarMascota(nameMascota.getText());
+        if(M == null){
+            tex_inf.setText("No se encontro Mascota.");
+        }else{
+            t = M;
+            tex_inf.appendText("Nombre Mascota: " + t.getName() + "\n");
+            tex_inf.appendText("Raza Mascota: " + t.getBreed()+ "\n");
+            d = t.getService();
+            L = "Services: ";
+            if(d[0] == 1){
+                L = L + "Bano, ";
+            }
+            if(d[1] == 1){
+                L = L + "Corte, ";
+            }
+            if(d[2] == 1){
+                L = L + "Manicure";
+            }
+            tex_inf.appendText(L);
+            tex_inf.appendText("\nCosto: " + t.getPrecio());
+            tex_inf.appendText("\nNombre Humano: " + t.getNameHuman()+ "\n");
+            tex_inf.appendText("Tel. Humano: " + t.getMovilHuman()+ "\n");
+        }
+
     }
     
 }
