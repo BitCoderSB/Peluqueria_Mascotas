@@ -26,12 +26,61 @@ public class Mascota {
         this.movilHuman = movilHuman;
     }
 
-    public String getName(){
-        return this.name;
-    }
     
+    
+    
+
+
+    // Métodos get
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public int[] getService() {
+        return service;
+    }
+
     public float getPrecio(){
         return this.cost;
+    }
+
+    public String getNameHuman() {
+        return nameHuman;
+    }
+
+    public String getMovilHuman() {
+        return movilHuman;
+    }
+
+    // Métodos set
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public void setService(int[] service) {
+        this.service = service;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    public void setNameHuman(String nameHuman) {
+        this.nameHuman = nameHuman;
+    }
+
+    public void setMovilHuman(String movilHuman) {
+        this.movilHuman = movilHuman;
     }
 
 }

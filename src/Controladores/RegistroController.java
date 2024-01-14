@@ -6,6 +6,8 @@ package Controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import Logica.Gestion_Mascota;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +41,10 @@ public class RegistroController implements Initializable {
     private int B = 0;
     private int C = 0;
     private int M = 0;
+    private Gestion_Mascota pet;
+
+    private int[] arrayServices = new int[3];
+
     @FXML
     private TextField T_raza;
     @FXML
@@ -55,7 +61,10 @@ public class RegistroController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.pet = new Gestion_Mascota();
+        arrayServices[0] = 0;
+        arrayServices[1] = 0;
+        arrayServices[2] = 0;
     }    
 
     @FXML
@@ -96,9 +105,11 @@ public class RegistroController implements Initializable {
         
         if(B == 0){
             this.i += 100;
+            arrayServices[0] = 1;
             B = 1;
         }else{
             this.i -= 100;
+            arrayServices[0] = 0;
             B = 0;
         }
         costo.setText(String.valueOf(i));
@@ -108,9 +119,11 @@ public class RegistroController implements Initializable {
     private void C_corte(ActionEvent event) {
         if(C == 0){
             this.i += 270;
+            arrayServices[1] = 1;
             C = 1;
         }else{
             this.i -= 270;
+            arrayServices[1] = 0;
             C = 0;
         }
         costo.setText(String.valueOf(i));
@@ -120,9 +133,11 @@ public class RegistroController implements Initializable {
     private void C_Manicure(ActionEvent event) {
         if(M == 0){
             this.i += 180;
+            arrayServices[2] = 1;
             M = 1;
         }else{
             this.i -= 180;
+            arrayServices[2] = 0;
             M = 0;
         }
         costo.setText(String.valueOf(i));
@@ -131,7 +146,7 @@ public class RegistroController implements Initializable {
     @FXML
     private void C_Registrar(ActionEvent event) {
         
-        
+        pet.registroMascota(bt_nameM.getText(), T_raza.getText(), arrayServices, i, T_nameH.getText(), T_movilH.getText());
         
     }
     
