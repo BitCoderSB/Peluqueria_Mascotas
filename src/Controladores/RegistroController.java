@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -24,6 +26,29 @@ public class RegistroController implements Initializable {
 
     @FXML
     private Button btn;
+    @FXML
+    private TextField costo;
+    @FXML
+    private CheckBox bt_Bano;
+    @FXML
+    private CheckBox bt_Corte;
+    @FXML
+    private CheckBox bt_Manicure;
+    
+    private float i = 0;
+    private int B = 0;
+    private int C = 0;
+    private int M = 0;
+    @FXML
+    private TextField T_raza;
+    @FXML
+    private TextField T_nameH;
+    @FXML
+    private TextField T_movilH;
+    @FXML
+    private Button bt_Registrar;
+    @FXML
+    private TextField bt_nameM;
 
     /**
      * Initializes the controller class.
@@ -58,5 +83,68 @@ public class RegistroController implements Initializable {
             // Manejar cualquier excepción que pueda ocurrir al cargar la nueva ventana
         }
     }
+
+
+    @FXML
+    private void C_Bano(ActionEvent event) {
+        
+        if(this.bt_Bano.isSelected()){
+            System.out.println("True");
+        }else{
+            System.out.println("False");
+        }
+        
+        if(B == 0){
+            this.i += 100;
+            B = 1;
+        }else{
+            this.i -= 100;
+            B = 0;
+        }
+        costo.setText(String.valueOf(i));
+    }
+
+    @FXML
+    private void C_corte(ActionEvent event) {
+        if(C == 0){
+            this.i += 270;
+            C = 1;
+        }else{
+            this.i -= 270;
+            C = 0;
+        }
+        costo.setText(String.valueOf(i));
+    }
+
+    @FXML
+    private void C_Manicure(ActionEvent event) {
+        if(M == 0){
+            this.i += 180;
+            M = 1;
+        }else{
+            this.i -= 180;
+            M = 0;
+        }
+        costo.setText(String.valueOf(i));
+    }
+
+    @FXML
+    private void C_Registrar(ActionEvent event) {
+        
+        
+        
+    }
+    
+    
+    private boolean verificaText(TextField h){
+        String texto = h.getText();
+        
+        if (texto == null || texto.trim().isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
     
 }

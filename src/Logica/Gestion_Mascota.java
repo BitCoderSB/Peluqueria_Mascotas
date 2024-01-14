@@ -15,6 +15,10 @@ public class Gestion_Mascota {
     
     private ArrayList<Mascota> Mascotas = new ArrayList<>();
     
+    public Gestion_Mascota(){
+        
+    }
+    
     public void registroMascota(String name, String breed, int[] services, float cost, String nameHuman, String movilHuman){
     
         Mascota nuevaMascota = new Mascota(name, breed, services, cost, nameHuman, movilHuman);
