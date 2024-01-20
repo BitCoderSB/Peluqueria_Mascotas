@@ -146,7 +146,14 @@ public class RegistroController implements Initializable {
     @FXML
     private void C_Registrar(ActionEvent event) {
         
-        pet.registroMascota(bt_nameM.getText(), T_raza.getText(), arrayServices, i, T_nameH.getText(), T_movilH.getText());
+
+        if(verificaText(T_nameH) && verificaText(T_movilH) && verificaText(bt_nameM) && verificaText(T_raza)  &&   (bt_Bano.isSelected() || bt_Corte.isSelected() || bt_Manicure.isSelected())){
+            pet.registroMascota(bt_nameM.getText(), T_raza.getText(), arrayServices, i, T_nameH.getText(), T_movilH.getText());
+        }else{
+            System.out.println("Faltan campos por rellenar");
+        }
+
+        
         
     }
     
